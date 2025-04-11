@@ -1,7 +1,17 @@
 @extends('layout.master')
 @section('content')
     <div class="main-content mt-5">
-        <div class="card">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+            @if(session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
+            <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
@@ -47,7 +57,16 @@
                                 <td>{{$course->start_date}}</td>
                                 <td>{{$course->due_date}}</td>
                                 <td>${{$course->price}}</td>
-                                <td><a href="" target="_blank">{{$course->register}}</a></td>
+                                <td>
+                                  <form action="{{route('stripe.payment')}}" method="POST">
+                                      @csrf
+                                      <input type="hidden" name="price" value="{{$course->price}}">
+                                      <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                          <i class="bi-cart-fill me-1"></i>
+                                          Buy Now
+                                      </button>
+                                  </form>
+                                </td>
                             </tr>
 
                         @endforeach
@@ -55,7 +74,6 @@
                     </table>
                 </div>
             </div>
-
     </div>
 
 @endsection

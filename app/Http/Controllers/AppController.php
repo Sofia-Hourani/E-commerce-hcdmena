@@ -26,8 +26,7 @@ class AppController extends Controller
         $courses = Course::query()
             ->when($search, function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
-            })
-            ->get();
+            })->get();
 
         return view('courses', compact('courses'));
     }

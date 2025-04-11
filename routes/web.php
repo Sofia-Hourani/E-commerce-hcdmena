@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +37,11 @@ Route::get('/',[AppController::class, 'index'])->name('app.index');
 Route::get('/about',[AppController::class, 'about'])->name('app.about');
 Route::get('/courses',[AppController::class, 'courses'])->name('app.courses');
 Route::get('/search',[AppController::class, 'search'])->name('app.search');
+
+Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal.payment');
+Route::get('/paypal/success',[PaypalController::class,'success'])->name('paypal.success');
+Route::get('/paypal/cancel',[PaypalController::class,'cancel'])->name('paypal.cancel');
+
+Route::post('/stripe/payment',[StripeController::class,'payment'])->name('stripe.payment');
+Route::get('/stripe/success',[StripeController::class,'success'])->name('stripe.success');
+Route::get('/stripe/cancel',[StripeController::class,'cancel'])->name('stripe.cancel');
