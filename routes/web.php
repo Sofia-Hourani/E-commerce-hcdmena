@@ -59,10 +59,17 @@ Route::get('/auth/redirect', function () {
 })->name('google.login');
 
 Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
+    $googleUser = Socialite::driver('google')->stateless()->user();
 
-    $user=User::firstOrCreate(['email'=>$user->email],['name'=>$user->nickname,'password'=>bcrypt(Str::random(24))]);
+    $user = User::firstOrCreate(
+        ['email' => $googleUser->getEmail()],
+        [
+            'name' => $googleUser->getName(),
+            'password' => bcrypt(Str::random(24))
+        ]
+    );
 
-    Auth::login($user,true);
-    return redirect('/');
+    Auth::login($user, true);
+
+    return redirect()->route('app.index');
 });
