@@ -4,7 +4,6 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -42,6 +41,11 @@
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
+                <x-primary-button class="ms-4">
+                    <a href="{{ route('google.login') }}">
+                        Sign in with Google
+                    </a>
+                </x-primary-button>
         </div>
     </form>
 </x-guest-layout>
