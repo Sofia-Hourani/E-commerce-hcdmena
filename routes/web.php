@@ -34,3 +34,4 @@ require __DIR__.'/auth.php';
 Route::get('/',[AppController::class, 'index'])->name('app.index');
 Route::get('/about',[AppController::class, 'about'])->name('app.about');
 Route::get('/courses',[AppController::class, 'courses'])->name('app.courses');
+Route::get('/search',[AppController::class, 'search'])->name('app.search');

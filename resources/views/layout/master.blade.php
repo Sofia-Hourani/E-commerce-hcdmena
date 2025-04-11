@@ -18,7 +18,8 @@
 <body>
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.05);">
-        <a class="navbar-brand" href="">HCDMENA</a>
+        <div class="navbar-brand"><img style="width:60%" class="img-fluid w-10 h-10 object-fit-cover" src="{{ asset('storage/uploads/image/logo.png') }}" alt="..." />
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
