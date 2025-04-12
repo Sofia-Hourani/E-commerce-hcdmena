@@ -75,3 +75,4 @@ Route::get('/auth/callback', function () {
 
 // About section
 Route::get('/about',[AppController::class, 'about'])->name('app.about');
+
