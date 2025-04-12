@@ -39,7 +39,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/',[AppController::class, 'index'])->name('app.index');
-Route::get('/about',[AppController::class, 'about'])->name('app.about');
 Route::get('/courses',[AppController::class, 'courses'])->name('app.courses');
 Route::get('/search',[AppController::class, 'search'])->name('app.search');
 
@@ -53,7 +52,7 @@ Route::get('/stripe/success',[StripeController::class,'success'])->name('stripe.
 Route::get('/stripe/cancel',[StripeController::class,'cancel'])->name('stripe.cancel');
 // end here
 
-
+// sign up with google
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 })->name('google.login');
@@ -73,3 +72,6 @@ Route::get('/auth/callback', function () {
 
     return redirect()->route('app.index');
 });
+
+// About section
+Route::get('/about',[AppController::class, 'about'])->name('app.about');

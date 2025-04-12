@@ -32,18 +32,18 @@
                     </div>
 
                 </div>
-                <div class="card-body">
+                <div class="card-body ">
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">total hours</th>
+                            <th scope="col" >Name</th>
+                            <th scope="col" style="width:10%" >total hours</th>
                             <th scope="col">Delivery</th>
                             <th scope="col">start date</th>
                             <th scope="col">due date</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Register</th>
+                            <th scope="col" class="text-center">Register</th>
 
                         </tr>
                         </thead>
@@ -54,18 +54,30 @@
                                 <td>{{$course->name}}</td>
                                 <td>{{$course->total_hours}}</td>
                                 <td>{{$course->delivery}}</td>
-                                <td>{{$course->start_date}}</td>
-                                <td>{{$course->due_date}}</td>
+                                <td style="width: 10%">{{$course->start_date}}</td>
+                                <td style="width: 10%">{{$course->due_date}}</td>
                                 <td>${{$course->price}}</td>
                                 <td>
+                                    <div class="row g-3">
+                                    <div class="col-md-6">
                                   <form action="{{route('stripe.payment')}}" method="POST">
                                       @csrf
                                       <input type="hidden" name="price" value="{{$course->price}}">
                                       <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                           <i class="bi-cart-fill me-1"></i>
-                                          Buy Now
+                                             Buy Now (Stripe)
                                       </button>
-                                  </form>
+                                  </form></div>
+                                    <div class="col-md-6">
+                                      <form action="{{route('paypal.payment')}}" method="POST">
+                                          @csrf
+                                          <input type="hidden" name="price" value="{{$course->price}}">
+                                          <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                              <i class="bi-cart-fill me-1"></i>
+                                              Buy Now (PayPal)
+                                          </button>
+                                      </form></div>
+                                    </div>
                                 </td>
                             </tr>
 

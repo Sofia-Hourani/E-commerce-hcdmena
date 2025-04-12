@@ -45,18 +45,13 @@ class PaypalController extends Controller
         $paypalToken = $provider->getAccessToken();
         $response=$provider->capturePaymentOrder($request->token);
         if(isset($response['status']) && $response['status']=='COMPLETED') {
-            return "Paid successfully";
+            return redirect()->back()->with('success', 'Payment successful!');
         }else{
             return redirect()->route('paypal.cancel');
         }
     }
     public function cancel(Request $request)
     {
-        return "payment failed";
-        /*$provider = new PayPalClient;
-        $provider->setApiCredentials(config('paypal'));
-        $paypalToken = $provider->getAccessToken();
-        $response=$provider->capturePaymentOrder($request->token);
-        dd($response);*/
+        return redirect()->back()->with('fail', 'Payment Failed!');
     }
 }

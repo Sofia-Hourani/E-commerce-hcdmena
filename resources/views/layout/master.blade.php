@@ -8,8 +8,9 @@
     <meta name="author" content="" />
 
     <title>hcdmena</title>
+    <link rel="icon" type="image/png" href="{{asset('storage/uploads/image/logo-title.png')}}">
+
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
