@@ -50,7 +50,7 @@
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-4 max-w-xl">
                 <a href="{{ route('google.login') }}">
                     Sign with Google
                 </a>
